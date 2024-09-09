@@ -1,0 +1,63 @@
+services:
+  magic:
+    # image: mageai/mageai:latest
+    command: mage start ${PROJECT_NAME}
+    # command: ["sh", "-c", "mage start ${PROJECT_NAME} && mage run populate_elasticsearch"]
+    # command: sh -c "/app/run_pipelines.sh"  # Command defined here
+    # command: bash /mage_tools/run.sh  # Command defined here
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.mage
+    environment:
+      - USER_CODE_PATH=/home/src/${PROJECT_NAME}
+      - ENV=${ENV:-development}
+    ports:
+      - 6789:6789
+    volumes:
+      - .:/home/src/
+    restart: on-failure:5
+    networks:
+      - app-network
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    restart: always
+    networks:
+      - app-network
+
+  python-script-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    networks:
+      - app-network
+    # If you need to keep the volume mount for development purposes, uncomment the following:
+    # volumes:
+    #   - .:/usr/src/app
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - elasticsearch
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

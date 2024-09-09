@@ -1,0 +1,8 @@
+streamlit
+elasticsearch
+requests
+openai
+psycopg2-binary
+python-dotenv
+numpy
+spacy

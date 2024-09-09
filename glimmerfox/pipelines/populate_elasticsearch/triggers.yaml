@@ -1,0 +1,14 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2024-09-05 20:25:14.659234
+  name: by docker compose
+  pipeline_uuid: populate_elasticsearch
+  schedule_interval: null
+  schedule_type: api
+  settings: null
+  sla: null
+  start_time: 2024-09-05 20:23:00
+  status: active
+  token: e148d1b8a12c4c65b6fe0b4b703e196f
+  variables: {}
