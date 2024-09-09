@@ -1,4 +1,8 @@
-# RAG Q&A System
+# Glimmerfox RAG
+
+<p align="left">
+  <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox-rag/main/glimmerfox.webp" alt="Glimmerfox" height="300">
+</p>
 
 This project implements a Retrieval-Augmented Generation (RAG) Question Answering system using Elasticsearch for retrieval and OpenAI's models for answer generation.
 
