@@ -2,9 +2,6 @@ services:
   magic:
     # image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
-    # command: ["sh", "-c", "mage start ${PROJECT_NAME} && mage run populate_elasticsearch"]
-    # command: sh -c "/app/run_pipelines.sh"  # Command defined here
-    # command: bash /mage_tools/run.sh  # Command defined here
     env_file:
       - .env
     build:
@@ -33,31 +30,80 @@ services:
     networks:
       - app-network
 
-  python-script-runner:
+  postgres:
+    image: postgres:13
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  python_run:
+    env_file:
+        - .env
     build:
       context: .
       dockerfile: Dockerfile.python
+    depends_on:
+      - magic
+      - elasticsearch
+      - postgres
+      - grafana
     networks:
       - app-network
-    # If you need to keep the volume mount for development purposes, uncomment the following:
-    # volumes:
-    #   - .:/usr/src/app
 
   streamlit:
+    env_file:
+        - .env
     build:
       context: .
       dockerfile: Dockerfile.streamlit
     ports:
       - "8501:8501"
     environment:
-      - ELASTICSEARCH_HOST=elasticsearch
-      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
+      - ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     depends_on:
-      - elasticsearch
+      - python_run
     networks:
       - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_AUTH_DISABLE_LOGIN_FORM=false
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_USERS_ALLOW_ORG_CREATE=false
+      - GF_USERS_AUTO_ASSIGN_ORG=true
+      - GF_USERS_AUTO_ASSIGN_ORG_ROLE=Viewer
+      - GF_SECURITY_SECRET_KEY=${GRAFANA_SECRET_KEY:-your_secret_key_here}
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
 
 networks:
   app-network:
     driver: bridge
+
+
+volumes:
+  postgres_data:
+  grafana_data:
