@@ -2,7 +2,7 @@
 # The Glimmerfox Advanced RAG
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/glimmerfox.webp" alt="Glimmerfox" height="300">
+  <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/glimmerfox.webp" alt="Glimmerfox">
 </p>
 
 ## 0. Overview
@@ -126,38 +126,38 @@ docker compose up
     * 1 point: Only one retrieval approach is evaluated
     * 2 points: Multiple retrieval approaches are evaluated, and the best one is used ✅ Check *Retrieval Analysis* in [evaluation-results.ipynb](https://github.com/bilozorov/glimmerfox/blob/main/notebooks/5%20-%20evaluation-results.ipynb) and [evaluate-retrieval.ipynb](https://github.com/bilozorov/glimmerfox/blob/main/notebooks/3%20-%20evaluate-retrieval.ipynb) + additional Advanced Techniques evaluation in [advanced.ipynb](https://github.com/bilozorov/glimmerfox/blob/main/notebooks/9%20-%20advanced.ipynb)
     <p align="center">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Retrieval_evaluation.png" alt="Retrieval_evaluation" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Retrieval_evaluation.png" alt="Retrieval_evaluation">
     </p>
 * RAG evaluation
     * 0 points: No evaluation of RAG is provided
     * 1 point: Only one RAG approach (e.g., one prompt) is evaluated
     * 2 points: Multiple RAG approaches are evaluated, and the best one is used ✅ Check *RAG Analysis* in [evaluation-results.ipynb](https://github.com/bilozorov/glimmerfox/blob/main/notebooks/5%20-%20evaluation-results.ipynb) and [evaluate-rag-offline.ipynb](https://github.com/bilozorov/glimmerfox/blob/main/notebooks/4%20-%20evaluate-rag-offline.ipynb)
     <p align="centre">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Cosine_similarity.png" alt="Cosine_similarity" height="300">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/LLM-as-a-Judge.png" alt="LLM-as-a-Judge" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Cosine_similarity.png" alt="Cosine_similarity">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/LLM-as-a-Judge.png" alt="LLM-as-a-Judge">
     </p>
 * Interface
    * 0 points: No way to interact with the application at all
    * 1 point: Command line interface, a script, or a Jupyter notebook
    * 2 points: UI (e.g., Streamlit), web application (e.g., Django), or an API (e.g., built with FastAPI) ✅ Check [http://65.109.14.99:8501/](http://65.109.14.99:8501/)
    <p align="centre">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Streamlit.png" alt="Streamlit" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Streamlit.png" alt="Streamlit">
     </p>
 * Ingestion pipeline
    * 0 points: No ingestion
    * 1 point: Semi-automated ingestion of the dataset into the knowledge base, e.g., with a Jupyter notebook
    * 2 points: Automated ingestion with a Python script or a special tool (e.g., Mage, dlt, Airflow, Prefect) ✅ Fully Automated func *run_pipeline_populate_elasticsearch()* from [populate_elasticsearch.py](https://github.com/bilozorov/glimmerfox/blob/main/populate_elasticsearch.py) wich starts automatically from *python_run* service in [docker-compose.yml](https://github.com/bilozorov/glimmerfox/blob/main/docker-compose.yml) and trigger the *Trigger* at **Mage**.
     <p align="centre">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Pipeline_1.png" alt="Pipeline_1" height="300">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Pipeline_2.png" alt="Pipeline_2" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Pipeline_1.png" alt="Pipeline_1">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Pipeline_2.png" alt="Pipeline_2">
     </p>
 * Monitoring
    * 0 points: No monitoring
    * 1 point: User feedback is collected OR there's a monitoring dashboard
    * 2 points: User feedback is collected and there's a dashboard with at least 5 charts ✅ Done with **Grafana** and **Streamlit** (Thumbs Up/Down buttons)
     <p align="centre">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/User_feedback.png" alt="User_feedback" height="300">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Grafana.png" alt="Grafana" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/User_feedback.png" alt="User_feedback">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Grafana.png" alt="Grafana">
     </p>
 * Containerization
     * 0 points: No containerization
@@ -174,5 +174,5 @@ docker compose up
 * Bonus points (not covered in the course)
     * [x] Deployment to the cloud (2 points) ✅ Check [http://65.109.14.99:8501/](http://65.109.14.99:8501/) by Hetzner Cloud
     <p align="centre">
-        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Streamlit.png" alt="Streamlit" height="300">
+        <img src="https://raw.githubusercontent.com/bilozorov/glimmerfox/main/images/Streamlit.png" alt="Streamlit">
     </p>
