@@ -1,6 +1,6 @@
 .env
 # notebooks
-# .DS_Store
+.DS_Store
 /mage_data/
 # *.ipynb
 
