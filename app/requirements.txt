@@ -1,8 +1,8 @@
-streamlit
-elasticsearch
-requests
-openai
-psycopg2-binary
-python-dotenv
-numpy
-spacy
+streamlit==1.38.0
+elasticsearch==8.15.1
+requests==2.32.3
+openai==1.45.0
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+numpy==1.26.4
+spacy==3.7.6
