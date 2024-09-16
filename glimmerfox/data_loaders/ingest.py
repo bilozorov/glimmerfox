@@ -8,7 +8,7 @@ if 'data_loader' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
-url = "https://raw.githubusercontent.com/bilozorov/glimmerfox-rag/main/data/knowledge.csv"
+url = "https://raw.githubusercontent.com/bilozorov/glimmerfox/main/data/knowledge.csv"
 limit_rows = None
 
 @data_loader

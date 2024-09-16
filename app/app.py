@@ -136,7 +136,7 @@ def main():
 
     # Project description
     st.markdown("""
-    This is a AAdvanced RAG (Retrieval-Augmented Generation) Q&A System that uses Elasticsearch for retrieval and OpenAI's models for answer generation.
+    This is a Advanced RAG (Retrieval-Augmented Generation) Q&A System that uses Elasticsearch for retrieval and OpenAI's models for answer generation.
     """)
     # - **Without Valid API Key**: You can use the app with a 100-character query limit. Answers will be generated using a simple method.
     # - **With Valid API Key**: Full access to the system, using OpenAI's powerful models for answer generation.
