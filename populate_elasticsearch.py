@@ -64,7 +64,10 @@ def run_pipeline_populate_elasticsearch():
     """
     populating by our KNWLG.base
     """
-    url = "http://magic:6789/api/pipeline_schedules/5/pipeline_runs/e148d1b8a12c4c65b6fe0b4b703e196f"
+    # url = "http://magic:6789/api/pipeline_schedules/5/pipeline_runs/e148d1b8a12c4c65b6fe0b4b703e196f"
+    # url = "http://65.109.14.99:6789/api/pipeline_schedules/1/pipeline_runs/e148d1b8a12c4c65b6fe0b4b703e196f"
+    url = "http://magic:6789/api/pipeline_schedules/1/pipeline_runs/e148d1b8a12c4c65b6fe0b4b703e196f"
+    
     headers = {"Content-Type": "application/json"}
 
     print('!----> populate_elasticsearch for magic started', flush=True)
